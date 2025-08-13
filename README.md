@@ -43,13 +43,13 @@ Beautiful, fast, and practical satellite imagery for Pakistan’s cities and agr
 ```mermaid
 flowchart LR
   A[User] --> B[Next.js UI]
-  B --> C[/api/gee]
-  C --> D[Flask /gee/run]
+  B --> C[POST /api/gee]
+  C --> D[Flask: POST /gee/run]
   D --> E[gee_job.py (Earth Engine export)]
   E -->|Export to| F[Google Drive]
-  D <-->|Download .tif| F
-  D --> G[(downloads)]
-  D --> H[/gee/file/<name>]
+  F -->|Download .tif| D
+  D --> G[(downloads folder)]
+  D --> H[Serve /gee/file/&lt;filename&gt;]
   H --> B
 ```
 
